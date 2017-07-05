@@ -1,0 +1,20 @@
+
+
+<%= stylesheet_link_tag "comments" %>
+
+<h1>Social Network</h1>
+
+<div class="container">
+    <%= render 'posts/form' %>
+    <br>    
+    <br>
+    <div id="new_posts"></div>
+    <%= render @posts %>
+</div>
+<script>
+  $(document).ready(function () {
+      $("#new_post").on("ajax:success", function (e, data, status, xhr) {
+          $("#new_post").append(xhr.responseText)
+      });
+  });
+</script>

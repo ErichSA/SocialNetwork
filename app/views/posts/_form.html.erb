@@ -1,0 +1,22 @@
+<% if user_signed_in? %>
+  <%= form_with(model:@post) do |f| %>
+
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <div class="status-upload">
+        <%= f.label :description %>
+        <%= f.text_area :description, placeholder: "Enter your post here !" %>
+    </div><!-- Status Upload  -->
+
+
+    <div class="field">
+        <%= f.label :image do %>
+          <%= f.file_field :image %>
+          <%= f.hidden_field :image_cache %>
+        <% end %>
+    </div>
+
+    <br>
+    <%= f.submit %>    
+  <%end%>    
+<%end%>

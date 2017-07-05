@@ -1,0 +1,29 @@
+<h1>Posts#new</h1>
+
+<%= form_for(@post) do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <div class="field">
+      <%= f.label :image do %>
+        <%= f.file_field :image %>
+        <%= f.hidden_field :image_cache %>
+      <% end %>
+  </div>
+
+
+  <br>
+  <%= f.submit %>
+
+  <% @posts.each do |post| %>
+    <p>
+        <%= post.description %> 
+    </p>
+  <% end %>
+
+
+<% end %>

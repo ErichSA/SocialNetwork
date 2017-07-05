@@ -1,0 +1,23 @@
+<html>    
+    <div class="container">
+        <%= render @post %>
+        <br/> 
+        <h2>Comments</h2>
+
+        <section id="comments-section" >
+            <div id="new_comments"></div>
+            <%= render @post.comments %>
+            <% if user_signed_in? %>
+              <h3> Add a comment: </h3>
+              <%= render 'comments/form' %>
+            <%end%>
+        </section>
+    </div>
+    <script>
+      $(document).ready(function () {
+          $("#new_comments").on("ajax:success", function (e, data, status, xhr) {
+              $("#new_comments").append(xhr.responseText)
+          });
+      });
+    </script>
+</html>
